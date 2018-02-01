@@ -21,12 +21,58 @@ body {
   margin: 20px 0;
   height: 300px;
   width: 200px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
-  padding: 5px 0;
+}
+
+.crypto_container p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.coin_rank{
+  position: relative;
+  padding: 4px 5px;
+  float: left;
+  background-color: #ccc;
+  border-radius: 4px 0 4px 0;
+  color: #fff;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px #333;
+}
+
+.icon_container{
+  width: 100%;
+  max-height: 150px;
+  padding: 10px 0;
+  margin: 0;
 }
 
 .coin_icon {
-  width: 140px;
+  width: 130px;
+}
+
+.crypto_container p.coin_name {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 18px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.data_container{
+  width: 100%;
+}
+
+.crypto_container p.coin_price{
+  margin: 0;
+  font-size: 17px;
+}
+
+.coin_change{
+  padding: 15px 0;
+  font-size: 20px;
 }
