@@ -4,9 +4,23 @@ body {
   margin: 0;
 }
 
+.top_bar{
+  padding: 0 12px;
+  font-size: 20px;
+  color: #bbb;
+}
+
+.filter {
+  float: right;
+  padding: 0 12px;
+  margin-top: -50px;
+}
+
+
 .container{
   max-width: 1100px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 .crypto_grid {
@@ -18,7 +32,7 @@ body {
 
 .crypto_container {
   display: inline-block;
-  margin: 20px 0;
+  margin: 20px 2px;
   height: 300px;
   width: 200px;
   border: 1px solid #ccc;
