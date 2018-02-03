@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { fetchCurrencyData, importAll } from '../utils/api';
 import { format as formatCurrency } from 'currency-formatter';
-import '../App.css';
 
 
 function CryptoGrid({cryptoData}){
@@ -42,11 +41,11 @@ function CryptoGrid({cryptoData}){
   )
 }
 
-function Filter(props){
+function Sort(props){
 
   return(
-    <div>
-      <select className="coin_filter" onChange={props.filterChange}>
+    <div className="sort_contain">
+      <select className="coin_sort" onChange={props.sortChange}>
         <option>Rank</option>
         <option>Price</option>
         <option>Percent</option>
@@ -60,7 +59,7 @@ class Crypto extends Component{
 
   state = {
     data : null,
-    filterBy: "rank"
+    sortBy: "rank"
   }
 
   componentDidMount(){
@@ -73,9 +72,9 @@ class Crypto extends Component{
     this.setState(() => ({ data }));
   }
 
-  setFilter = (filterBy) => {
-    this.setState(() => ({ filterBy }),
-      () => { this.filter() }
+  setSort = (sortBy) => {
+    this.setState(() => ({ sortBy }),
+      () => { this.sorter() }
     );
   }
 
@@ -85,13 +84,13 @@ class Crypto extends Component{
     this.setState(() => ({ data }));
   }
 
-  filter = () => {
+  sorter = () => {
     let searchBy;
     let { data } = this.state;
-    const { filterBy } = this.state;
+    const { sortBy } = this.state;
 
 
-    switch (this.state.filterBy){
+    switch (sortBy){
       case 'Percent':
         searchBy = "percent_change_24h";
         break;
@@ -113,9 +112,9 @@ class Crypto extends Component{
   }
 
 //events
-  changeFilter = (event) => {
+  changeSort = (event) => {
     const { value } = event.target;
-    this.setFilter(value);
+    this.setSort(value);
   }
 
   render(){
@@ -123,8 +122,9 @@ class Crypto extends Component{
 
       this.state.data
         ? <div>
-            <div className="filter">
-              <Filter filterChange={this.changeFilter} />
+            <div className="top_bar">
+              <h1>CoinGander.</h1>
+              <Sort sortChange={this.changeSort} />
             </div>
             <div className="crypto_grid">
               <CryptoGrid cryptoData={this.state.data} />
