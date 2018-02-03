@@ -46,7 +46,7 @@ function Filter(props){
 
   return(
     <div>
-      <select onChange={props.filterChange}>
+      <select className="coin_filter" onChange={props.filterChange}>
         <option>Rank</option>
         <option>Price</option>
         <option>Percent</option>
