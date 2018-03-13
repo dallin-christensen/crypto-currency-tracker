@@ -20,7 +20,12 @@ function CryptoGrid({cryptoData}){
             {name} ({symbol})
           </p>
           <div className="icon_container">
-            <img className="coin_icon" src={images[imgFile] ? images[imgFile] : images["unknown.png"]} alt={id} />
+            <img
+              className="coin_icon"
+              src={images[imgFile]
+                    ? images[imgFile]
+                    : images["unknown.png"]} 
+              alt={id} />
           </div>
           <div className="data_container">
             <p className="coin_price">
