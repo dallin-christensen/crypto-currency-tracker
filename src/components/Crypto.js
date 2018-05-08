@@ -4,11 +4,10 @@ import { format as formatCurrency } from 'currency-formatter';
 
 
 function CryptoGrid({cryptoData}){
-  const images = importAll(require.context('../images/icons', false, /\.(png|jpe?g|svg)$/));
 
   return (
     cryptoData.map(({id, name, symbol, rank, market_cap_usd, price_usd, percent_change_24h}) => {
-      const imgFile = symbol.toLowerCase()+".svg";
+      const img = `https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/128/color/${symbol.toLowerCase()}.png`;
 
       return (
         <div className="crypto_container" key={id}>
@@ -22,9 +21,7 @@ function CryptoGrid({cryptoData}){
           <div className="icon_container">
             <img
               className="coin_icon"
-              src={images[imgFile]
-                    ? images[imgFile]
-                    : images["unknown.png"]} 
+              src={img} 
               alt={id} />
           </div>
           <div className="data_container">
