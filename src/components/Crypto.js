@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchCurrencyData, importAll } from '../utils/api';
+import { fetchCurrencyData } from '../utils/api';
 import { format as formatCurrency } from 'currency-formatter';
 
 
