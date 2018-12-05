@@ -3,44 +3,52 @@ import { fetchCurrencyData } from '../utils/api';
 import { format as formatCurrency } from 'currency-formatter';
 
 
-function CryptoGrid({cryptoData}){
+class CryptoGrid extends Component {
+  addDefaultSrc = (ev) => {
+    ev.target.src = 'https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/128/color/btc.png'
+  }
+  render () {
+    const { cryptoData } = this.props
 
-  return (
-    cryptoData.map(({id, name, symbol, rank, market_cap_usd, price_usd, percent_change_24h}) => {
-      const img = `https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/128/color/${symbol.toLowerCase()}.png`;
-
-      return (
-        <div className="crypto_container" key={id}>
-
-          <div className="coin_rank">
-            {rank}
-          </div>
-          <p className="coin_name">
-            {name} ({symbol})
-          </p>
-          <div className="icon_container">
-            <img
-              className="coin_icon"
-              src={img} 
-              alt={id} />
-          </div>
-          <div className="data_container">
-            <p className="coin_price">
-              {formatCurrency(price_usd, { code: 'USD' } )}
-            </p>
-            <div className="coin_change"
-              style={percent_change_24h >= 0 ? {color: '#32CD32'} : {color: 'red'}}>
-              {percent_change_24h}%
+    return (
+      cryptoData.map(({id, name, symbol, rank, market_cap_usd, price_usd, percent_change_24h}) => {
+        const img = `https://raw.githubusercontent.com/cjdowner/cryptocurrency-icons/master/128/color/${symbol.toLowerCase()}.png`;
+  
+        return (
+          <div className="crypto_container" key={id}>
+  
+            <div className="coin_rank">
+              {rank}
             </div>
-            <p>
-              {formatCurrency(market_cap_usd, { code: 'USD' } )}
+            <p className="coin_name">
+              {name} ({symbol})
             </p>
+            <div className="icon_container">
+              <img
+                className="coin_icon"
+                src={img} 
+                alt={id}
+                onError={this.addDefaultSrc}
+              />
+            </div>
+            <div className="data_container">
+              <p className="coin_price">
+                {formatCurrency(price_usd, { code: 'USD' } )}
+              </p>
+              <div className="coin_change"
+                style={percent_change_24h >= 0 ? {color: '#32CD32'} : {color: 'red'}}>
+                {percent_change_24h}%
+              </div>
+              <p>
+                {formatCurrency(market_cap_usd, { code: 'USD' } )}
+              </p>
+            </div>
+  
           </div>
-
-        </div>
-      );
-    })
-  )
+        );
+      })
+    )
+  }
 }
 
 function Sort(props){
